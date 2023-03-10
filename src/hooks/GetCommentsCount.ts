@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { IComment } from '../../models';
+import { IComment } from '../models';
 
 export const getCommentsCount = (postId: number) => {
   const [commentCount, setCommentCount] = useState<number>(0)

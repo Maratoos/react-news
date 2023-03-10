@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-import { INews } from '../../models';
+import { INews } from '../models';
 
 export const getNewsById = (id: number) => {
   const [news, setNews] = useState<INews>()

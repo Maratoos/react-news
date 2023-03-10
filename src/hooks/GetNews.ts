@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { INews } from "../../models";
+import { INews } from "../models";
 
 export const getNews = () => {
   const [news, setNews] = useState<INews[]>([])

@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/system";
-import { useLocation } from "react-router-dom";
 import { Typography } from "@mui/material";
-import { IComment, ICommentProps } from "../../../models";
+import { IComment, ICommentProps } from "../../models";
 import { unixTimeToNormalDate } from "../../helpers/unixTimeToNormalDate";
 import { getNestedComments } from "../../hooks/UseComments";
 

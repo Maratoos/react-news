@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-import { ICardItemProps } from "../../../models";
+import { ICardItemProps } from "../../models";
 import { unixTimeToNormalDate } from "../../helpers/unixTimeToNormalDate";
 
 

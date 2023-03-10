@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { IComment } from "../../models";
+import { IComment } from "../models";
 
 export const getCommentsById = (postId: number) => {
   const [commentsIsLoading, setCommentsIsLoading] = useState<boolean>(false)

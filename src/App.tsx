@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Header } from "./assets/components/Header/Header";
-import { Home } from "./assets/Pages/Home";
-import { News } from "./assets/Pages/News";
+import { Header } from "./components/Header/Header";
+import { Home } from "./Pages/Home";
+import { News } from "./Pages/News";
 
 function App() {
   return (
