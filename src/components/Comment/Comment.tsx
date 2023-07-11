@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import { IComment, ICommentProps } from "../../models";
 import { unixTimeToNormalDate } from "../../helpers/unixTimeToNormalDate";
 import { getNestedComments } from "../../hooks/UseComments";
 
-export const Comment = ({ author, date, text, kids }: ICommentProps) => {
+type CommentReturn = ({ author, date, text, kids }: ICommentProps) => ReactElement
+
+export const Comment: CommentReturn = ({ author, date, text, kids }) => {
   const [nestedComments, setNestedComments] = useState<IComment[]>([]);
   const { fetchNestedComments, isLoading, error } = getNestedComments();
 
-  const handleGetNestedComments = async () => {
+  const handleGetNestedComments = async (): Promise<void> => {
     if (kids && !nestedComments.length) {
       const nested = await fetchNestedComments(kids);
       setNestedComments(nested.sort((a, b) => b.time - a.time));

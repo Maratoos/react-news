@@ -33,7 +33,7 @@ export const getCommentsById = (postId: number) => {
     }
   }, [postId])
 
-  const handleRefresh = async () => {
+  const handleRefresh = async (): Promise<void> => {
     await fetchComments()
   }
 

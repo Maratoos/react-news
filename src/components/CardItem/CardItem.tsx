@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent, ReactComponentElement, ReactElement } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 import { ICardItemProps } from "../../models";
 import { unixTimeToNormalDate } from "../../helpers/unixTimeToNormalDate";
 
+type CardItemReturn = ({title, score, author, date, id}: ICardItemProps) => ReactElement
 
-export const CardItem = ({title, score, author, date, id}: ICardItemProps) => {
+export const CardItem: CardItemReturn = ({title, score, author, date, id}) => {
   return (
     <Link to={`news/${id}`} style={{margin: "0 10px 20px 10px"}}>
       <Card sx={{ minWidth: 300, backgroundColor: "#293133",  }}>

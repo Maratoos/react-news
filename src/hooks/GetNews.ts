@@ -2,13 +2,21 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { INews } from "../models";
 
-export const getNews = () => {
+interface IGetNewsType {
+  news: Array<INews>,
+  isLoading: boolean,
+  errorMessage: string,
+  disabled: boolean,
+  handleRefreshNews: () => void
+}
+
+export const getNews = (): IGetNewsType => {
   const [news, setNews] = useState<INews[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [disabled, setDisabled] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
 
-  const fetchNews = useCallback(async () => {
+  const fetchNews = useCallback(async ():Promise<void> => {
     setIsLoading(true)
     setDisabled(true)
     try {
@@ -41,7 +49,7 @@ export const getNews = () => {
     }
   }, [fetchNews])
 
-  const handleRefreshNews = useCallback(async () => {
+  const handleRefreshNews = useCallback(async ():Promise<void> => {
     await fetchNews()
   }, [fetchNews])
 

@@ -2,19 +2,27 @@ import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { INews } from '../models';
 
-export const getNewsById = (id: number) => {
-  const [news, setNews] = useState<INews>()
+interface IGetNewsByIdType {
+  news: INews | {},
+  isLoading: boolean,
+  errorMessage: string
+}
+
+type IGetNewsByIdReturnType = (id: number) => IGetNewsByIdType
+
+export const getNewsById: IGetNewsByIdReturnType = (id) => {
+  const [news, setNews] = useState<INews | {}>({})
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
 
-  const memoizedId = useMemo(() => id, [id])
+  const memoizedId = useMemo((): number => id, [id])
 
   useEffect(() => {
     const fetchNews = async () => {
       setIsLoading(true)
 
       try {
-        const { data } = await axios(`https://hacker-news.firebaseio.com/v0/item/${memoizedId}.json`,)
+        const { data } = await axios(`https://hacker-news.firebaseio.com/v0/item/${memoizedId}.json`)
 
         setNews(data);
       } catch (e: any) {
